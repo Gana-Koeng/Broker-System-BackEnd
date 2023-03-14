@@ -1,28 +1,46 @@
 package csx.broker.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.io.Serializable;
+import java.math.BigInteger;
+import java.sql.Date;
 
 //create table and variable match to database
 @Entity
 @Setter
 @Getter
 @Data
-@Table(name = "Broker")
-public class Broker {
+@Table(name = "tableorder")
+@IdClass(BrokerId.class)
+public class Broker implements Serializable {
 
     @Id
-    @Column(name= "ID",columnDefinition = "Int NOT NULL")
-    private int id;
+    @Column(name= "order_no",columnDefinition = "Int")
+    private int OrderNo;
 
-    @Column(name= "Sell",columnDefinition = "Int")
-    private Integer sell;
+    @Id
+    @Column(name= "order_date",columnDefinition = "Date")
+    private Date OrderDate;
 
-    @Column(name= "Price",columnDefinition = "Int")
-    private Integer price;
+    @Id
+    @Column(name= "broker_id",columnDefinition = "String")
+    private String BrokerId;
+
+    @Column(name= "account_no",columnDefinition = "String")
+    private String AccountNo;
+    @Column(name= "order_type",columnDefinition = "String")
+    private String OrderType;
+    @Column(name= "issue_no",columnDefinition = "String")
+    private String IssueCode;
+    @Column(name= "original_order_no",columnDefinition = "Int")
+    private int OriginalOrderNo;
+    @Column(name= "order_qty",columnDefinition = "Int")
+    private int OrderQty;
+    @Column(name= "order_uv",columnDefinition = "BigInt")
+    private BigInteger OrderUV;
+
 }

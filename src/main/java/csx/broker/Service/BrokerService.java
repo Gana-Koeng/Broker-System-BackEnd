@@ -3,7 +3,10 @@ package csx.broker.Service;
 
 import csx.broker.Entity.Broker;
 import csx.broker.Repository.BrokerRepository;
+import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class BrokerService {
@@ -17,8 +20,11 @@ public class BrokerService {
         return brokerRepository.findAll();
     }
 
-    public Iterable<Broker> getAlldata() {
-        return brokerRepository.getAllData();
+//    public List<String> getAllBrokerId() {
+//        return brokerRepository.getAllBrokerId();
+//    }
+    public void save(Broker broker){
+        brokerRepository.save(broker);
     }
 
 }
