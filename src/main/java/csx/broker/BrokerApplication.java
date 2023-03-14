@@ -18,9 +18,9 @@ public class BrokerApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET","PUT","POST","DELETE");
+				registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET","PUT","POST", "DELETE");
 			}
 		};
 	}
-}
 
+}

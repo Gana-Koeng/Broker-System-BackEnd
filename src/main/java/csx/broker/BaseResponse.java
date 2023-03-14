@@ -8,9 +8,9 @@ import lombok.Setter;
 @Setter
 public class BaseResponse {
 
-    private Object resCode;
+    private Integer resCode;
 
-    private String resMsg;
+    private Integer resMsg;
 
     private Object Data;
 

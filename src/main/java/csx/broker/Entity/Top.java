@@ -8,14 +8,13 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-//create table and variable match to database
 @Entity
-@Setter
 @Getter
+@Setter
 @Data
-@Table(name = "Broker")
-public class Broker {
 
+@Table(name = "Buy")
+public class Top {
     @Id
     @Column(name= "ID",columnDefinition = "Int NOT NULL")
     private int id;
@@ -23,6 +22,16 @@ public class Broker {
     @Column(name= "Sell",columnDefinition = "Int")
     private Integer sell;
 
+    @Column(name= "Sell_Quality",columnDefinition = "Int")
+    private Integer sell_quality;
+
     @Column(name= "Price",columnDefinition = "Int")
     private Integer price;
+
+    @Column(name= "Buy",columnDefinition = "Int")
+    private Integer buy;
+     @Column(name= "Buy_Quality",columnDefinition = "Int")
+    private Integer buy_quality;
+
+
 }

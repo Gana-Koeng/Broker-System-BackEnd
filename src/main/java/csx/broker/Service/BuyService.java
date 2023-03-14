@@ -1,24 +1,30 @@
 package csx.broker.Service;
 
 import csx.broker.Entity.Buy;
-import csx.broker.Repository.BuyRepository;
+import csx.broker.Repository.BuyRespository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BuyService {
-    private final BuyRepository buyRepository;
-
-    private BuyService(BuyRepository buyRepository) {
-        this.buyRepository = buyRepository;
-
+    private final BuyRespository buyRespository;
+    private BuyService(BuyRespository buyRespository) {
+        this.buyRespository = buyRespository;
     }
-
     public Iterable<Buy> getAll() {
-
-        return buyRepository.findAll();
+        return buyRespository.findAll();
     }
 
     public Iterable<Buy> getAlldata() {
-        return buyRepository.getAllData();
+        return buyRespository.getAllData();
     }
+
+
+    public void save(Buy buy){
+        buyRespository.save(buy);
+    }
+
+    public void delete(int id){
+        buyRespository.deleteById(id);
+    }
+
 }

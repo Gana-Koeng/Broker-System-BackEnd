@@ -10,7 +10,6 @@ public class BrokerService {
     private final BrokerRepository brokerRepository;
 
     private BrokerService(BrokerRepository brokerRepository) {
-
         this.brokerRepository = brokerRepository;
     }
 
