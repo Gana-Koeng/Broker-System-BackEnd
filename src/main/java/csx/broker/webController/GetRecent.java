@@ -1,30 +1,30 @@
 package csx.broker.webController;
 
 import csx.broker.BaseResponse;
-import csx.broker.Entity.Broker;
-import csx.broker.Service.BrokerService;
+import csx.broker.Entity.Recent;
+import csx.broker.Service.RecentService;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GetBrokerInfo {
+public class GetRecent {
 
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    final BrokerService brokerService;
+    final RecentService recentService;
 
-    public GetBrokerInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, BrokerService brokerService) {
+    public GetRecent(NamedParameterJdbcTemplate namedParameterJdbcTemplate, RecentService recentService) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-        this.brokerService = brokerService;
+        this.recentService = recentService;
     }
 
-    @GetMapping(value = {"api/broker-info"})
-    BaseResponse GetBrokerInfo() {
+    @GetMapping(value = {"api/recent-info"})
+    BaseResponse GetRecentInfo() {
         BaseResponse response = new BaseResponse();
-        Iterable<Broker> brokerList;
+        Iterable<Recent> recentList;
 
-        brokerList = brokerService.getAlldata();
-        response.setData(brokerList);
+        recentList = recentService.getAlldata();
+        response.setData(recentList);
         return response;
 
     }
