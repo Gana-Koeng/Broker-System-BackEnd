@@ -1,4 +1,4 @@
-package csx.broker.webController;
+package csx.broker.WebController;
 
 import csx.broker.BaseResponse;
 import csx.broker.Entity.Order;
@@ -19,7 +19,7 @@ public class SendOrder {
         System.out.println("qty    : " + req.qty);
         System.out.println("prc    : " + req.prc);
 
-        response.setResCode("100");
+        response.setResCode(1);
         response.setData(req);
         return response;
     }
