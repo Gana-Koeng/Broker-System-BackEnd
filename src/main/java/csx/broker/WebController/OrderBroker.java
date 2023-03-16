@@ -23,7 +23,7 @@ public class OrderBroker {
     BaseResponse BuyOrder(@RequestBody Broker req){
         BaseResponse response = new BaseResponse();
 
-        System.out.println("Successful---->");
+//        System.out.println("Successful---->");
 //        System.out.println("price  : " + req.getPrice());
 //        System.out.println("buy    : " + req.getBuy());
 
@@ -46,7 +46,8 @@ public class OrderBroker {
 //        System.out.println("price  : " + req.getPrice());
 //        System.out.println("buy    : " + req.getBuy());
 
-//        buyService.delete(req.getId());
+//                brokerService.delete(req.getOrderNo());
+
 
         return response;
     }

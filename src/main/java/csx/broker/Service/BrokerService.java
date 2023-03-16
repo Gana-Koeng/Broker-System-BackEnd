@@ -27,4 +27,9 @@ public class BrokerService {
         brokerRepository.save(broker);
     }
 
+    public void delete(int OrderNo){
+        brokerRepository.deleteById(OrderNo);
+    }
+
+
 }

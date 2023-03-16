@@ -40,12 +40,12 @@ public class OrderBuy {
 //                params
 //        );
 
-        buyService.save(req);
+//        buyService.save(req);
 //        System.out.println("odrId  : " + req.getId());
 //        System.out.println("price  : " + req.getPrice());
 //        System.out.println("buy    : " + req.getBuy());
 
-//        buyService.delete(req.getId());
+        buyService.delete(req.getId());
 
         return response;
     }
