@@ -1,29 +1,30 @@
 package csx.broker.WebController;
 
 import csx.broker.BaseResponse;
-import csx.broker.Entity.Broker;
-import csx.broker.Service.BrokerService;
+import csx.broker.Entity.Account;
+import csx.broker.Service.AccountService;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class OrderBroker {
+public class OrderAccount {
 
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    final BrokerService brokerService;
+    final AccountService accountService;
 
-    public OrderBroker(NamedParameterJdbcTemplate namedParameterJdbcTemplate, BrokerService brokerService) {
+    public OrderAccount(NamedParameterJdbcTemplate namedParameterJdbcTemplate, AccountService accountService) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-        this.brokerService = brokerService;
+        this.accountService = accountService;
     }
 
-    @PostMapping("/api/broker-order")
-    BaseResponse BuyOrder(@RequestBody Broker req){
+    @PostMapping("/api/account-order")
+    BaseResponse BuyOrder(@RequestBody Account req){
         BaseResponse response = new BaseResponse();
 
-//        System.out.println("Successful---->");
+
+//        System.out.println("odrId  : " + req.getId());
 //        System.out.println("price  : " + req.getPrice());
 //        System.out.println("buy    : " + req.getBuy());
 
@@ -41,13 +42,12 @@ public class OrderBroker {
 //                params
 //        );
 
-//        brokerService.save(req);
+        accountService.save(req);
 //        System.out.println("odrId  : " + req.getId());
 //        System.out.println("price  : " + req.getPrice());
 //        System.out.println("buy    : " + req.getBuy());
 
-                brokerService.delete(req.getOrderNo());
-
+//        accountService.delete(req.getAccountNo());
 
         return response;
     }
