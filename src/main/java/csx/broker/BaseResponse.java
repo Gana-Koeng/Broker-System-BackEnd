@@ -10,7 +10,7 @@ public class BaseResponse {
 
     private Integer resCode;
 
-    private Integer resMsg;
+    private String resMsg;
 
     private Object Data;
 

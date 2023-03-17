@@ -14,7 +14,7 @@ import java.sql.Date;
 @Setter
 @Getter
 @Data
-@Table(name = "tableorder")
+@Table(name = "table_order")
 @IdClass(BrokerId.class)
 public class Broker implements Serializable {
 
@@ -34,7 +34,7 @@ public class Broker implements Serializable {
     private String AccountNo;
     @Column(name= "order_type",columnDefinition = "String")
     private String OrderType;
-    @Column(name= "issue_no",columnDefinition = "String")
+    @Column(name= "issue_code",columnDefinition = "String")
     private String IssueCode;
     @Column(name= "original_order_no",columnDefinition = "Int")
     private int OriginalOrderNo;
@@ -42,5 +42,6 @@ public class Broker implements Serializable {
     private int OrderQty;
     @Column(name= "order_uv",columnDefinition = "BigInt")
     private BigInteger OrderUV;
+
 
 }
