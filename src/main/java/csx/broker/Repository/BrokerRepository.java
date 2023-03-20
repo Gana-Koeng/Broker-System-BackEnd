@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface BrokerRepository extends CrudRepository<Broker,Integer> {
 
-    @Query(value = "SELECT * FROM table_order ", nativeQuery = true)
+    @Query(value = "SELECT * FROM table_orders ", nativeQuery = true)
     Iterable<Broker> getAllData();
 
 }
