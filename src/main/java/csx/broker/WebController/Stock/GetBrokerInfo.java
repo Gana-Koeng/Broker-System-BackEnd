@@ -1,4 +1,4 @@
-package csx.broker.WebController;
+package csx.broker.WebController.Stock;
 
 import csx.broker.BaseResponse;
 import csx.broker.Entity.Broker;
