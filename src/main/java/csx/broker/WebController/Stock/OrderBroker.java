@@ -1,30 +1,31 @@
-package csx.broker.WebController;
+package csx.broker.WebController.Stock;
 
 import csx.broker.BaseResponse;
-import csx.broker.Entity.Buy;
-import csx.broker.Service.BuyService;
+import csx.broker.Entity.Broker;
+import csx.broker.Service.BrokerService;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class OrderBuy {
+public class OrderBroker {
 
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    final BuyService buyService;
+    final BrokerService brokerService;
 
-    public OrderBuy(NamedParameterJdbcTemplate namedParameterJdbcTemplate, BuyService buyService) {
+    public OrderBroker(NamedParameterJdbcTemplate namedParameterJdbcTemplate, BrokerService brokerService) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-        this.buyService = buyService;
+        this.brokerService = brokerService;
     }
 
-    @PostMapping("/api/buy-order")
-    BaseResponse BuyOrder(@RequestBody Buy req){
+    @PostMapping("/api/broker-order")
+    BaseResponse BuyOrder(@RequestBody Broker req){
         BaseResponse response = new BaseResponse();
-        System.out.println("odrId  : " + req.getId());
-        System.out.println("price  : " + req.getPrice());
-        System.out.println("buy    : " + req.getBuy());
+
+//        System.out.println("Successful---->");
+//        System.out.println("price  : " + req.getPrice());
+//        System.out.println("buy    : " + req.getBuy());
 
 
 //        String sql = "                              \n"+
@@ -40,12 +41,13 @@ public class OrderBuy {
 //                params
 //        );
 
-//        buyService.save(req);
+        brokerService.save(req);
 //        System.out.println("odrId  : " + req.getId());
 //        System.out.println("price  : " + req.getPrice());
 //        System.out.println("buy    : " + req.getBuy());
 
-        buyService.delete(req.getId());
+//       brokerService.delete(req.getOrderNo());
+
 
         return response;
     }
