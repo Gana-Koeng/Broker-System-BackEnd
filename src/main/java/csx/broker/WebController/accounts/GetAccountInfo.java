@@ -1,32 +1,33 @@
-package csx.broker.WebController;
+package csx.broker.WebController.accounts;
 
 import csx.broker.BaseResponse;
-import csx.broker.Entity.Issue;
-import csx.broker.Service.IssueService;
+import csx.broker.Entity.Account;
+import csx.broker.Service.AccountService;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GetIssueInfo {
+public class GetAccountInfo {
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    final IssueService issueService;
+    final AccountService accountService;
 
-    public GetIssueInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, IssueService issueService) {
+    public GetAccountInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, AccountService accountService) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-        this.issueService = issueService;
+        this.accountService = accountService;
     }
 
-    @GetMapping(value = {"api/issue-info"})
+    @GetMapping(value = {"api/account-info"})
     BaseResponse GetBuyInfo() {
         BaseResponse response = new BaseResponse();
-        Iterable<Issue> issues;
+        Iterable<Account> accounts;
 
-        issues = issueService.getAlldata();
-        response.setData(issues);
+        accounts = accountService.getAlldata();
+        response.setData(accounts);
 //        response.setResCode(1);
 //        response.setResMsg(1);
         return response;
 
     }
+
 }
