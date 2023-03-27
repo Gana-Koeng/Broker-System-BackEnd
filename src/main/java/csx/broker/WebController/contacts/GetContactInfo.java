@@ -1,8 +1,8 @@
 package csx.broker.WebController.contacts;
 
 import csx.broker.BaseResponse;
-import csx.broker.Entity.Contacts;
-import csx.broker.Service.ContactService;
+import csx.broker.Entity.contacts.Contacts;
+import csx.broker.Service.contacts.ContactService;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

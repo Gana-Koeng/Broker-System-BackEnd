@@ -1,33 +1,32 @@
-package csx.broker.WebController.types;
+package csx.broker.WebController.issues;
 
 import csx.broker.BaseResponse;
-import csx.broker.Entity.types.Types;
-import csx.broker.Service.types.TypesService;
+import csx.broker.Entity.issues.Issue;
+import csx.broker.Service.issues.IssueService;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GetTypesInfo {
+public class GetIssueInfo {
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    final TypesService typesService;
+    final IssueService issueService;
 
-    public GetTypesInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, TypesService typesService) {
+    public GetIssueInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, IssueService issueService) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-        this.typesService = typesService;
+        this.issueService = issueService;
     }
 
-    @GetMapping(value = {"api/types-info"})
-    BaseResponse GetTypesInfo() {
+    @GetMapping(value = {"api/issue-info"})
+    BaseResponse GetBuyInfo() {
         BaseResponse response = new BaseResponse();
-        Iterable<Types> types;
+        Iterable<Issue> issues;
 
-        types = typesService.getAlldata();
-        response.setData(types);
+        issues = issueService.getAlldata();
+        response.setData(issues);
 //        response.setResCode(1);
 //        response.setResMsg(1);
         return response;
 
     }
-
 }
