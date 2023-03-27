@@ -1,8 +1,8 @@
 package csx.broker.WebController.accounts;
 
 import csx.broker.BaseResponse;
-import csx.broker.Entity.Account;
-import csx.broker.Service.AccountService;
+import csx.broker.Entity.accounts.Account;
+import csx.broker.Service.accounts.AccountService;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

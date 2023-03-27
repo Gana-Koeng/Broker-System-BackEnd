@@ -1,7 +1,6 @@
-package csx.broker.WebController.brokers;
+package csx.broker.WebController.broker;
 
 import csx.broker.BaseResponse;
-//import csx.broker.Entity.brokers.Brokers;
 import csx.broker.Service.broker.BrokerService;
 import lombok.Builder;
 import lombok.Data;
@@ -13,17 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class GetBrokersInfo {
+public class GetBrokerInfo {
 
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     final BrokerService brokerService;
 
-    public GetBrokersInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, BrokerService brokerService) {
+    public GetBrokerInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, BrokerService brokerService) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
         this.brokerService = brokerService;
     }
 
-    @GetMapping(value = {"api/brokers-info"})
+    @GetMapping(value = {"api/broker-info"})
     BaseResponse GetBrokerInfo() {
         BaseResponse response = new BaseResponse();
 
@@ -45,11 +44,13 @@ public class GetBrokersInfo {
                 "     , A.original_order_no                 ON_NO     \n" +
                 "     , A.order_qty                         OD_QY     \n" +
                 "     , A.order_uv                          OD_UV     \n" +
-                "     , B.broker_name                       BK_NM     \n" +
-                "     , A.issue_code                        ISU_CD    \n" +
-                "  FROM table_order A                                 \n" +
-                "     , brokers B                                      \n" +
-                " WHERE A.broker_id = B.broker_id                  \n" ;
+                "     , B.issue_name                        ISU_NM     \n" +
+                "     , B.issue_symbol                      ISU_SM     \n" +
+                "     , B.issue_code                        ISU_CD     \n" +
+                "     , B.issue_description                 ISU_DS     \n" +
+                "  FROM table_order A                                  \n" +
+                "     , stock B                                        \n" +
+                " WHERE A.issue_code = B.issue_code                    \n" ;
 
 //                "   AND A.order_date BETWEEN :fromDate \n" +
 //                "                        AND :toDate     ";
@@ -70,7 +71,9 @@ public class GetBrokersInfo {
                             .originalOrderNo(resultSet.getString("ON_NO"))
                             .orderQty(resultSet.getString("OD_QY"))
                             .orderUV(resultSet.getString("OD_UV"))
-                            .brokerName(resultSet.getString("BK_NM"))
+                            .issueSymbol(resultSet.getString("ISU_SM"))
+                            .issueDsc(resultSet.getString("ISU_DS"))
+                            .issueName(resultSet.getString("ISU_NM"))
                             .issueCode(resultSet.getString("ISU_CD"))
 
                             .build();
@@ -87,7 +90,6 @@ public class GetBrokersInfo {
     static class IssueOrder {
         String orderNo;
         String orderDt;
-
         String brokerId;
         String orderType;
         String issueCode;
@@ -95,8 +97,8 @@ public class GetBrokersInfo {
         String originalOrderNo;
         String orderQty;
         String orderUV;
-        String brokerName;
-
-
+        String issueSymbol;
+        String issueDsc;
+        String issueName;
     }
 }

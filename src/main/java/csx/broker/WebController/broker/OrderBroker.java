@@ -1,26 +1,31 @@
-package csx.broker.WebController.contacts;
+package csx.broker.WebController.broker;
 
 import csx.broker.BaseResponse;
-import csx.broker.Entity.contacts.Contacts;
-import csx.broker.Service.contacts.ContactService;
+import csx.broker.Entity.broker.Broker;
+//import csx.broker.Repository.bests.BestRepository;
+import csx.broker.Service.broker.BrokerService;
+import csx.broker.Service.bests.BestService;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class OrderContact {
+public class OrderBroker {
 
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    final ContactService contactService;
+    final BrokerService brokerService;
+    final BestService bestService;
 
-    public OrderContact(NamedParameterJdbcTemplate namedParameterJdbcTemplate, ContactService contactService) {
+    public OrderBroker(NamedParameterJdbcTemplate namedParameterJdbcTemplate, BrokerService brokerService, BestService bestService) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-        this.contactService = contactService;
+        this.brokerService = brokerService;
+        this.bestService = bestService;
+
     }
 
-    @PostMapping("/api/contact-order")
-    BaseResponse buyOrder(@RequestBody Contacts req){
+    @PostMapping("/api/broker-order")
+    BaseResponse BuyOrder(@RequestBody Broker req){
         BaseResponse response = new BaseResponse();
 
 //        System.out.println("Successful---->");
@@ -41,7 +46,8 @@ public class OrderContact {
 //                params
 //        );
 
-        contactService.save(req);
+        brokerService.save(req);
+        bestService.process(req);
 //        System.out.println("odrId  : " + req.getId());
 //        System.out.println("price  : " + req.getPrice());
 //        System.out.println("buy    : " + req.getBuy());
