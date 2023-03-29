@@ -18,8 +18,10 @@ public class Balance {
 
     @Id
     @Column(name= "account_no",columnDefinition = "String")
-    private int account_no;
+    private String account_no;
     @Column(name= "balance",columnDefinition = "Int")
-    private String balance;
+    private int balance;
+    @Column(name= "amount",columnDefinition = "Int")
+    private int amount;
 
 }
