@@ -22,13 +22,12 @@ public class Best {
     private int id;
     @Column(name= "best_type",columnDefinition = "String")
     private String bestType;
-
+    @Column(name= "best_stock",columnDefinition = "String")
+    private String BestStock;
     @Column(name= "best_uv",columnDefinition = "Int")
     private int BestUV;
     @Column(name= "best_qty",columnDefinition = "int")
     private String BestQty;
-    @Column(name= "best_stock",columnDefinition = "String")
-    private String BestStock;
 
 
 }

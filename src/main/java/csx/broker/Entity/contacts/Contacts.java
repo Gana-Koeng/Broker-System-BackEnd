@@ -18,8 +18,8 @@ import lombok.Setter;
 public class Contacts {
 
     @Id
-    @Column(name= "id",columnDefinition = "Int")
-    private int id;
+    @Column(name= "account_no",columnDefinition = "String")
+    private String accountNo;
     @Column(name= "name",columnDefinition = "String")
     private String name;
     @Column(name= "email",columnDefinition = "String")

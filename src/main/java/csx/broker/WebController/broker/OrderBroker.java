@@ -1,6 +1,7 @@
 package csx.broker.WebController.broker;
 
 import csx.broker.BaseResponse;
+import csx.broker.Entity.bests.Best;
 import csx.broker.Entity.broker.Broker;
 //import csx.broker.Repository.bests.BestRepository;
 import csx.broker.Service.broker.BrokerService;
@@ -47,12 +48,17 @@ public class OrderBroker {
 //        );
 
         brokerService.save(req);
-        bestService.process(req);
-//        System.out.println("odrId  : " + req.getId());
-//        System.out.println("price  : " + req.getPrice());
-//        System.out.println("buy    : " + req.getBuy());
 
-//       brokerService.delete(req.getOrderNo());
+        bestService.process(req);
+
+//        bestService.getExistingBestOrder(in);
+/*
+        bestService.getExistingBestOrder();
+        System.out.println("odrId  : " + req.getId());
+        System.out.println("price  : " + req.getPrice());
+        System.out.println("buy    : " + req.getBuy());
+       brokerService.delete(req.getOrderNo());
+*/
 
 
         return response;

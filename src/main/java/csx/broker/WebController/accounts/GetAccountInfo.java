@@ -25,7 +25,7 @@ public class GetAccountInfo {
         accounts = accountService.getAlldata();
         response.setData(accounts);
 //        response.setResCode(1);
-//        response.setResMsg(1);
+        response.setResMsg("show Data successful...");
         return response;
 
     }
