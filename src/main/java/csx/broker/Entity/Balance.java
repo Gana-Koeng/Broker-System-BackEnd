@@ -21,8 +21,5 @@ public class Balance {
     private int account_no;
     @Column(name= "balance",columnDefinition = "Int")
     private String balance;
-    @Column(name= "id_type",columnDefinition = "Int")
-    private String id_type;
-    @Column(name= "date",columnDefinition = "Date")
-    private String date;
+
 }

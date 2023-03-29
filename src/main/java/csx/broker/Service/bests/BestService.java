@@ -34,9 +34,9 @@ public class BestService {
 
         bestOrder.setBestQty("500");
         bestOrder.setBestUV(500);
-        bestOrder.setBestBroker("500");
+//        bestOrder.setBestBroker("500");
         bestOrder.setBestType("3");
-
+        bestOrder.setBestStock("12");
         save(bestOrder);
     }
 //it to call two entity wwe should write in best service and broker order
