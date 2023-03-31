@@ -1,6 +1,6 @@
-package csx.broker.Repository;
+package csx.broker.Repository.balances;
 
-import csx.broker.Entity.Balance;
+import csx.broker.Entity.balances.Balance;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

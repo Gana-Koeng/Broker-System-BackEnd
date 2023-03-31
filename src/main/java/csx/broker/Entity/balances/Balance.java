@@ -1,4 +1,4 @@
-package csx.broker.Entity;
+package csx.broker.Entity.balances;
 
 
 import jakarta.persistence.Column;
@@ -21,5 +21,6 @@ public class Balance {
     private int account_no;
     @Column(name= "balance",columnDefinition = "Int")
     private String balance;
-
+    @Column(name= "date",columnDefinition = "Date")
+    private String date;
 }

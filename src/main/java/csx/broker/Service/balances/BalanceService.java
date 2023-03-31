@@ -1,8 +1,8 @@
-package csx.broker.Service;
+package csx.broker.Service.balances;
 
-import csx.broker.Entity.Balance;
+import csx.broker.Entity.balances.Balance;
 
-import csx.broker.Repository.BalanceRepository;
+import csx.broker.Repository.balances.BalanceRepository;
 
 import org.springframework.stereotype.Service;
 
