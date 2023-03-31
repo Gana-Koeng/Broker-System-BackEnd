@@ -2,6 +2,7 @@ package csx.broker.Service;
 
 import csx.broker.Entity.Balance;
 
+import csx.broker.Entity.accounts.Account;
 import csx.broker.Repository.BalanceRepository;
 
 import org.springframework.stereotype.Service;
@@ -14,11 +15,13 @@ public class BalanceService {
     private BalanceService(BalanceRepository balanceRepository) {
         this.balanceRepository = balanceRepository;
     }
-    public void save(Balance balance){
-        balanceRepository.save(balance);
-    }
+
 
     public Iterable<Balance> getAlldata() {
         return balanceRepository.findAll();
     }
+    public void save(Balance balance){
+        balanceRepository.save(balance);
+    }
+
 }

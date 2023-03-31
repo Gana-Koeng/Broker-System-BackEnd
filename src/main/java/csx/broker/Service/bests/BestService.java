@@ -1,9 +1,9 @@
 package csx.broker.Service.bests;
 
 
-//import csx.broker.Entity.accounts.Account;
-import csx.broker.Entity.broker.Broker;
+import csx.broker.Entity.accounts.Account;
 import csx.broker.Entity.bests.Best;
+import csx.broker.Entity.broker.Broker;
 import csx.broker.Repository.bests.BestRepository;
 import csx.broker.Repository.broker.BrokerRepository;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -35,71 +35,77 @@ public class BestService {
 //    }
     public void process(Broker req) {
         Best bestOrder = new Best();
-
-        bestOrder.setBestQty(String.valueOf(req.getOrderQty()));
-        bestOrder.setBestUV(Integer.parseInt(String.valueOf(req.getOrderUV())));
-        bestOrder.setBestStock(String.valueOf(req.getIssueCode()));
-        bestOrder.setBestType(String.valueOf(req.getOrderType()));
+        
+        bestOrder.setOrderQty(req.getOrderQty());
+        bestOrder.setOrderUv(Integer.parseInt(String.valueOf(req.getOrderUV())));
+        bestOrder.setOrderStock(String.valueOf(req.getIssueCode()));
+        bestOrder.setOrderType(String.valueOf(req.getOrderType()));
 
         save(bestOrder);
     }
 //it to call two entity we should write in best service and broker order
 
-     public void getExistingBestOrder(Best in){
+    public void getExistingBestOrder(Best in) {
 
-        String sql = "" +
-                " SELECT COUNT(*)                     \n" +
-                "   FROM best_price                   \n" +
-                "  WHERE BEST_TYPE = :bestType        \n" +
-                "    AND BEST_UV = :bestUV            \n" +
-                "    AND BEST_QTY = :bestQty          \n" +
-                "    AND BEST_STOCK = :bestStock      \n" +
+        String GET_BEST_PRICE = "" +
+                "  SELECT COUNT(*)                     \n" +
+                "  FROM best_price                     \n" +
+                "  WHERE order_type = :orderType        \n" +
+                "    AND order_uv = :orderUV            \n" +
+                "    AND order_qty = :orderQty          \n" +
+                "    AND order_stock = :orderStock      \n" +
                 " ;";
         MapSqlParameterSource params = new MapSqlParameterSource();
-        params.addValue("bestType", in.getBestType());
-        params.addValue("bestUV", in.getBestUV());
-        params.addValue("bestQty", in.getBestQty());
-        params.addValue("bestStock", in.getBestStock());
+        params.addValue("orderType", in.getOrderType());
+        params.addValue("orderUV", in.getOrderUv());
+        params.addValue("orderQty", in.getOrderQty());
+        params.addValue("orderStock", in.getOrderStock());
 
         int exist = namedParameterJdbcTemplate.queryForObject(
-                sql,
+                GET_BEST_PRICE,
                 params,
                 int.class
         );
 
-        if(exist == 0){
+        if (exist == 0) {
 
-            sql = "" +
-                    "INSERT INTO best_price (best_type, best_uv, best_qty, best_stock) \n" +
-                    "VALUES (:bestType, :bestUV, :bestQty,:bestStock);";
+            String INSERT_BEST_PRICE = "" +
+                    "INSERT INTO best_price           \n" +
+                    "          ( order_type            \n" +
+                    "          , order_uv              \n" +
+                    "          , order_qty             \n" +
+                    "          , order_stock)          \n" +
+                    "   VALUES (:orderType            \n" +
+                    "         , :orderUV              \n" +
+                    "         , :orderQty             \n" +
+                    "         , :orderStock);           ";
 
-            params.addValue("bestType", in.getBestType());
-            params.addValue("bestUV", in.getBestUV());
-            params.addValue("bestQty", in.getBestStock());
-            params.addValue("bestStock", in.getBestQty());
 
             namedParameterJdbcTemplate.update(
-                sql,
-                params
-        );
+                    INSERT_BEST_PRICE,
+                    params
+            );
 
-                    ;
         }
 
-        if (exist != 0){
-//            String UPDATE_SQL;
-
-            sql = "" +
-                    "INSERT INTO best_price (best_type, best_uv, best_qty, best_stock) \n" +
-                    "VALUES (:bestType, :bestUV, :bestQty,:bestStock);";
-
-            params.addValue("bestType", in.getBestType());
-            params.addValue("bestUV", in.getBestUV());
-            params.addValue("bestQty", in.getBestStock());
-            params.addValue("bestStock", in.getBestQty());
-        }
+//        if (exist != 0){
+////            String UPDATE_SQL;
+//
+//            sql = "" +
+//                    "UPDATE best_price                          \n" +
+//                    "SET order_qty =(                           \n" +
+//                    "SELECT SUM(:orderQty+order_qty))           \n" +
+//                    "WHERE :orderUV = best_price.order_uv       \n" +
+//                    "AND :orderType = best_price.order_type     \n" +
+//                    "AND :orderStock =best_price.order_stock"    ;
+//
+//            params.addValue("orderType", in.getOrderType());
+//            params.addValue("orderUV", in.getOrderUV());
+//            params.addValue("orderStock", in.getOrderStock());
+//            params.addValue("orderQty", in.getOrderQty());
+//
+//
+//        }
 
     }
-
-
 }

@@ -17,6 +17,7 @@ public class OrderBroker {
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     final BrokerService brokerService;
     final BestService bestService;
+    private Best in;
 
     public OrderBroker(NamedParameterJdbcTemplate namedParameterJdbcTemplate, BrokerService brokerService, BestService bestService) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
@@ -51,7 +52,7 @@ public class OrderBroker {
 
         bestService.process(req);
 
-//        bestService.getExistingBestOrder(in);
+        bestService.getExistingBestOrder(in);
 /*
         bestService.getExistingBestOrder();
         System.out.println("odrId  : " + req.getId());
