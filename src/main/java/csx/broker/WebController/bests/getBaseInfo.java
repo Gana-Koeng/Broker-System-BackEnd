@@ -20,6 +20,7 @@ public class getBaseInfo {
     @GetMapping(value = {"api/best-info"})
     BaseResponse GetBaseInfo(){
         BaseResponse response = new BaseResponse();
+
         Iterable<Best>bests;
 
         bests = bestRepository.getAllData();

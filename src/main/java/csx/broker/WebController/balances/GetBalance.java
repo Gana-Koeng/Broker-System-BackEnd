@@ -31,6 +31,8 @@ public class GetBalance {
         balanceService.save(req);
         response.setResMsg("Successfully");
 
+        response.setResCode(1);
+        response.setData(req);
         return response;
     }
 }
