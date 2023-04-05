@@ -31,5 +31,8 @@ public class Best {
     private int orderQty;
 
 
+    public String getData() {
+        return "123";
+    }
 }
 

@@ -1,11 +1,12 @@
 package csx.broker.WebController.broker;
 
 import csx.broker.BaseResponse;
-import csx.broker.Entity.bests.Best;
 import csx.broker.Entity.broker.Broker;
 //import csx.broker.Repository.bests.BestRepository;
 import csx.broker.Service.broker.BrokerService;
 import csx.broker.Service.bests.BestService;
+import csx.broker.websocket.etc.RawSocketHandler;
+import csx.broker.websocket.send.QuotationDataSending;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,17 +18,20 @@ public class OrderBroker {
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     final BrokerService brokerService;
     final BestService bestService;
-    private Best in;
+    final QuotationDataSending quotationDataSending;
+    final RawSocketHandler rawSocketHandler;
 
-    public OrderBroker(NamedParameterJdbcTemplate namedParameterJdbcTemplate, BrokerService brokerService, BestService bestService) {
+    public OrderBroker(NamedParameterJdbcTemplate namedParameterJdbcTemplate, BrokerService brokerService, BestService bestService, QuotationDataSending quotationDataSending, RawSocketHandler rawSocketHandler) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
         this.brokerService = brokerService;
         this.bestService = bestService;
 
+        this.quotationDataSending = quotationDataSending;
+        this.rawSocketHandler = rawSocketHandler;
     }
 
     @PostMapping("/api/broker-order")
-    BaseResponse BuyOrder(@RequestBody Broker req){
+    BaseResponse BuyOrder(@RequestBody Broker req) {
         BaseResponse response = new BaseResponse();
 
 //        System.out.println("Successful---->");
@@ -51,6 +55,8 @@ public class OrderBroker {
         brokerService.save(req);
 
         bestService.process(req);
+
+        quotationDataSending.sending(rawSocketHandler, req);
 
 //        bestService.getExistingBestOrder(in);
 /*
