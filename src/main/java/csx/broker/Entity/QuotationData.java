@@ -30,9 +30,9 @@ public class QuotationData {
     private int orderQty;
 
 
-    public String getData() {
-
-        return null;
-    }
+//    public String getData() {
+//
+//        return "123";
+//    }
 }
 
