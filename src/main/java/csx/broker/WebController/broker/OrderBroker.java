@@ -67,7 +67,10 @@ public class OrderBroker {
        brokerService.delete(req.getOrderNo());
 */
 
+        response.setResMsg("Order Successfully...");
+        response.setResCode(1);
 
         return response;
+
     }
 }
