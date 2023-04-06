@@ -20,16 +20,16 @@ public class recently {
     @Column(name= "id",columnDefinition = "Int")
     private int  id;
     @Column(name= "time",columnDefinition = "Time")
-    private String time;
+    private int time;
     @Column(name= "execution_price",columnDefinition = "Int")
-    private String executionPrice;
+    private int executionPrice;
     @Column(name= "change",columnDefinition = "Int")
-    private String change;
+    private int change;
     @Column(name= "change_percentage",columnDefinition = "Int")
-    private String changePercentage;
+    private int changePercentage;
     @Column(name= "trade_volume",columnDefinition = "Int")
-    private String tradeVolume;
+    private int tradeVolume;
     @Column(name= "trade_value",columnDefinition = "Int")
-    private String tradeValue;
+    private int tradeValue;
 
 }

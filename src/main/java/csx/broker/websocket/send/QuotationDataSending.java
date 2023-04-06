@@ -20,10 +20,10 @@ public class QuotationDataSending {
         String formattedDate = sdf.format(broker.getOrderDate());
 
 
-        String msgSend =    broker.getIssueCode()                       +
-                            String.format("%06d", broker.getOrderQty()) +
-                            String.format("%05d", broker.getOrderUV())  +
-                            String.format("%06d", broker.getOrderNo())  + formattedDate;
+        String msgSend =
+//                            String.format("%06d", broker.getOrderQty())     +
+                            String.format("%05d", broker.getOrderUV())      +
+                            String.format("%06d", broker.getOrderNo())      + formattedDate;
 
 
         log.info("Send growth board market data [{}]", msgSend); //console.log in intellij

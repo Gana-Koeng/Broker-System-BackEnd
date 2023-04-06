@@ -36,8 +36,8 @@ public class Broker implements Serializable {
     private String AccountNo;
     @Column(name= "order_type",columnDefinition = "String")
     private String OrderType;
-    @Column(name= "issue_code",columnDefinition = "String")
-    private String IssueCode;
+    @Column(name= "issue_code",columnDefinition = "Int")
+    private int IssueCode;
     @Column(name= "original_order_no",columnDefinition = "Int")
     private int OriginalOrderNo;
     @Column(name= "order_qty",columnDefinition = "Int")
