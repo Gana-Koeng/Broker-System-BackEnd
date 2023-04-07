@@ -10,7 +10,7 @@ import java.sql.Date;
 @Data
 public class BrokerId implements Serializable {
 
-    private int OrderNo;
-    private Date OrderDate;
-    private String BrokerId;
+    private int orderNo;
+    private Date orderDate;
+    private String brokerId;
 }

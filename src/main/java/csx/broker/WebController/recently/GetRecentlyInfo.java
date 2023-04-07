@@ -1,26 +1,26 @@
 package csx.broker.WebController.recently;
 
 import csx.broker.BaseResponse;
-import csx.broker.Entity.recently.recently;
-import csx.broker.Service.recently.recentlyService;
+import csx.broker.Entity.recently.Recently;
+import csx.broker.Service.recently.RecentlyService;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class recentlyInfo {
+public class GetRecentlyInfo {
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    final recentlyService recentlyService;
+    final RecentlyService recentlyService;
 
-    public recentlyInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, recentlyService recentlyService) {
+    public GetRecentlyInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, RecentlyService recentlyService) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
         this.recentlyService = recentlyService;
     }
 
     @GetMapping(value = {"api/recently-info"})
-    BaseResponse recentlyInfo() {
+    BaseResponse GetRecentlyInfo() {
         BaseResponse response = new BaseResponse();
-        Iterable<recently> recently;
+        Iterable<Recently> recently;
 
         recently = recentlyService.getAlldata();
         response.setData(recently);
@@ -29,4 +29,5 @@ public class recentlyInfo {
         return response;
 
     }
+
 }

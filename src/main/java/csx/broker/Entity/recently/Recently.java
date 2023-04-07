@@ -8,19 +8,22 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Time;
 
+//create table and variable match to database
 @Entity
 @Setter
 @Getter
 @Data
 @Table(name = "recently")
-public class recently {
+
+public class Recently {
 
     @Id
     @Column(name= "id",columnDefinition = "Int")
-    private int  id;
+    private int id;
     @Column(name= "time",columnDefinition = "Time")
-    private int time;
+    private Time time;
     @Column(name= "execution_price",columnDefinition = "Int")
     private int executionPrice;
     @Column(name= "change",columnDefinition = "Int")

@@ -7,6 +7,7 @@ import csx.broker.Service.broker.BrokerService;
 import csx.broker.Service.bests.BestService;
 import csx.broker.websocket.etc.RawSocketHandler;
 import csx.broker.websocket.send.QuotationDataSending;
+import jakarta.transaction.Transactional;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -55,7 +56,6 @@ public class OrderBroker {
         brokerService.save(req);
 
         bestService.process(req);
-
         quotationDataSending.sending(rawSocketHandler, req);
 
 //        bestService.getExistingBestOrder(in);

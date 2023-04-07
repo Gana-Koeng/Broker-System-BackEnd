@@ -22,28 +22,28 @@ public class Broker implements Serializable {
 
     @Id
     @Column(name= "order_no",columnDefinition = "Int")
-    private int OrderNo;
+    private int orderNo;
 
     @Id
     @Column(name= "order_date",columnDefinition = "Date")
-    private Date OrderDate;
+    private Date orderDate;
 
     @Id
     @Column(name= "broker_id",columnDefinition = "String")
-    private String BrokerId;
+    private String brokerId;
 
     @Column(name= "account_no",columnDefinition = "String")
-    private String AccountNo;
+    private String accountNo;
     @Column(name= "order_type",columnDefinition = "int")
-    private int OrderType;
+    private int orderType;
     @Column(name= "issue_code",columnDefinition = "int")
-    private int IssueCode;
+    private int issueCode;
     @Column(name= "original_order_no",columnDefinition = "Int")
-    private int OriginalOrderNo;
+    private int originalOrderNo;
     @Column(name= "order_qty",columnDefinition = "Int")
-    private int OrderQty;
+    private int orderQty;
     @Column(name= "order_uv",columnDefinition = "BigInt")
-    private BigInteger OrderUV;
+    private BigInteger orderUV;
 
 //    List<Broker> list = new ArrayList<>();
 
