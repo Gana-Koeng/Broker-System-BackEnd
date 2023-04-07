@@ -30,6 +30,7 @@ public class QuotationDataSending {
             rawSocketHandler.sendAll(msgSend);
         }
         if (broker.getOrderType() == 2) {
+
             String msgSend =    "A2"                                                      +
                                 format("%09d",broker.getIssueCode())                      +
                                 format("%04d",Integer.parseInt(broker.getBrokerId()))     +
