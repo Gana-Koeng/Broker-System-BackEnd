@@ -1,3 +1,4 @@
+
 package csx.broker.tcp;
 
 import java.io.BufferedReader;
@@ -36,9 +37,9 @@ public class GreetClient {
     public static void main(String[] args) {
         GreetClient client = new GreetClient();
         try{
-            client.startConnection(" 10.10.18.146", 6000);
+            client.startConnection("10.10.18.146", 5000);
 
-            client.sendMessage("it i love you");
+            client.sendMessage("it's lol...  ");
 
         }catch (Exception e){
             client.stopConnection();

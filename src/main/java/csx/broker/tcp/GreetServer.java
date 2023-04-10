@@ -19,11 +19,12 @@ public class GreetServer {
             serverSocket = new ServerSocket(port);
             while(true){
                 clientSocket = serverSocket.accept();
-                System.out.println(clientSocket.getLocalPort());
+                System.out.println("Ip Address: "+ clientSocket.getLocalAddress());
+                System.out.println("Port: " + clientSocket.getLocalPort());
                 out = new PrintWriter(clientSocket.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 String msg = in.readLine();
-                System.out.println("Say : " + msg);
+                System.out.println("Message : " + msg);
             }
         }catch (Exception e){
             System.out.println(e);
@@ -38,6 +39,6 @@ public class GreetServer {
     }
     public static void main(String[] args) {
         GreetServer server=new GreetServer();
-        server.start(6000);
+        server.start(5000);
     }
 }
