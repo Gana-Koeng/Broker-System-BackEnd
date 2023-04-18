@@ -21,10 +21,10 @@ public class Best {
     @Id
     @Column(name = "id", columnDefinition = "Int")
     private int id;
-    @Column(name = "order_type", columnDefinition = "String")
-    private String orderType;
-    @Column(name = "order_stock", columnDefinition = "String")
-    private String orderStock;
+    @Column(name = "order_type", columnDefinition = "int")
+    private int orderType;
+    @Column(name = "order_stock", columnDefinition = "int")
+    private int orderStock;
     @Column(name = "order_uv", columnDefinition = "Int")
     private int orderUv;
     @Column(name = "order_qty", columnDefinition = "int")

@@ -21,6 +21,7 @@ public class GreetServer {
                 clientSocket = serverSocket.accept();
                 System.out.println("Ip Address: "+ clientSocket.getLocalAddress());
                 System.out.println("Port: " + clientSocket.getLocalPort());
+
                 out = new PrintWriter(clientSocket.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 String msg = in.readLine();

@@ -41,10 +41,6 @@ public class QuotationDataSending {
             log.info("Send growth board market data [{}]", msgSend); //console.log in intellij
             rawSocketHandler.sendAll(msgSend);
         }
-
-
-
-
-
     }
+
 }

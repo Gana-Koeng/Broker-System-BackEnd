@@ -8,10 +8,7 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.sql.Date;
-//import java.util.ArrayList;
-//import java.util.List;
 
-//create table and variable match to database
 @Entity
 @Setter
 @Getter
@@ -21,7 +18,7 @@ import java.sql.Date;
 public class Broker implements Serializable {
 
     @Id
-    @Column(name= "order_no",columnDefinition = "Int")
+    @Column(name= "order_no",columnDefinition = "Auto Increment")
     private int orderNo;
 
     @Id

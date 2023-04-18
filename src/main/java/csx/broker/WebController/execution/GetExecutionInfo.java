@@ -1,29 +1,31 @@
-package csx.broker.WebController;
+package csx.broker.WebController.execution;
 
 import csx.broker.BaseResponse;
-import csx.broker.Entity.Recently;
-import csx.broker.Repository.RecentlyRespository;
+
+import csx.broker.Entity.execution.Execution;
+import csx.broker.Repository.execution.ExecutionRepository;
+
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GetRecentlyInfo {
+public class GetExecutionInfo {
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    final RecentlyRespository recentlyRespository;
+    final ExecutionRepository executionRepository;
 
-    public GetRecentlyInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, RecentlyRespository recentlyRespository) {
+    public GetExecutionInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, ExecutionRepository executionRepository) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-        this.recentlyRespository = recentlyRespository;
+        this.executionRepository = executionRepository;
     }
 
-    @GetMapping(value = {"api/recentlies-info"})
+    @GetMapping(value = {"api/execution-info"})
     BaseResponse GetBuyInfo() {
         BaseResponse response = new BaseResponse();
-        Iterable<Recently> recentlies;
+        Iterable<Execution> executions;
 
-        recentlies = recentlyRespository.getAllData();
-        response.setData(recentlies);
+        executions = executionRepository.getAllData();
+        response.setData(executions);
 //        response.setResCode(1);
         response.setResMsg("show Data successful...");
         return response;

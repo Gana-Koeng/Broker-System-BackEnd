@@ -37,9 +37,9 @@ public class GreetClient {
     public static void main(String[] args) {
         GreetClient client = new GreetClient();
         try{
-            client.startConnection("10.10.18.146", 5000);
+            client.startConnection("10.10.18.248", 5000);
 
-            client.sendMessage("it's lol...  ");
+            client.sendMessage("Fuck You ... \uD83D\uDD95");
 
         }catch (Exception e){
             client.stopConnection();

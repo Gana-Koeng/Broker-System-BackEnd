@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Entity
 @Setter
 @Getter
@@ -18,10 +20,14 @@ public class Balance {
 
     @Id
     @Column(name= "account_no",columnDefinition = "String")
-    private String account_no;
+    private String accountNo;
     @Column(name= "balance",columnDefinition = "Int")
-    private String balance;
+    private int balance;
     @Column(name= "date",columnDefinition = "Date")
-    private String date;
+    private Date date;
+    @Column(name= "amount",columnDefinition = "int")
+    private int amount;
+    @Column(name= "status",columnDefinition = "string")
+    private String status;
 
 }

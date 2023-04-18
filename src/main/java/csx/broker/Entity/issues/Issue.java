@@ -28,6 +28,8 @@ public class Issue {
     private String issueName;
     @Column(name= "issue_description",columnDefinition = "String")
     private String issueDescription;
+    @Column(name= "issue_date",columnDefinition = "Date")
+    private Date issueDate;
 
 
 }

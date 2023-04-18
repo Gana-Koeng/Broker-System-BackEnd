@@ -1,36 +1,32 @@
-package csx.broker.WebController.broker;
+package csx.broker.WebController.execution;
 
 import csx.broker.BaseResponse;
 import csx.broker.Entity.broker.Broker;
-import csx.broker.Service.broker.BrokerService;
-import csx.broker.Service.bests.BestService;
-import csx.broker.websocket.etc.RawSocketHandler;
-import csx.broker.websocket.send.QuotationDataSending;
+import csx.broker.Entity.execution.Execution;
+import csx.broker.Service.execution.ExecutionService;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class OrderBroker {
+public class OrderExecution {
 
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    final BrokerService brokerService;
-    final BestService bestService;
-    final QuotationDataSending quotationDataSending;
-    final RawSocketHandler rawSocketHandler;
+    final ExecutionService executionService;
 
-    public OrderBroker(NamedParameterJdbcTemplate namedParameterJdbcTemplate, BrokerService brokerService, BestService bestService, QuotationDataSending quotationDataSending, RawSocketHandler rawSocketHandler) {
+    public OrderExecution(NamedParameterJdbcTemplate namedParameterJdbcTemplate, ExecutionService executionService) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-        this.brokerService = brokerService;
-        this.bestService = bestService;
-
-        this.quotationDataSending = quotationDataSending;
-        this.rawSocketHandler = rawSocketHandler;
+        this.executionService = executionService;
     }
+//    final BestService bestService;
+//    final QuotationDataSending quotationDataSending;
+//    final RawSocketHandler rawSocketHandler;
 
-    @PostMapping("/api/broker-order")
-    BaseResponse BuyOrder(@RequestBody Broker req) {
+
+
+    @PostMapping("/api/execution-order")
+    BaseResponse BuyOrder(@RequestBody Execution req) {
         BaseResponse response = new BaseResponse();
 
 //        System.out.println("Successful---->");
@@ -51,11 +47,10 @@ public class OrderBroker {
 //                params
 //        );
 
-        brokerService.save(req);
+        executionService.save(req);
 
-        bestService.process(req);
-//        bestService.getExistingBestOrder(best);
-        quotationDataSending.sending(rawSocketHandler, req);
+//        bestService.process(req);
+//        quotationDataSending.sending(rawSocketHandler, req);
 
 //        bestService.getExistingBestOrder(in);
 /*
