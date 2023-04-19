@@ -48,8 +48,8 @@ public class GetBrokersInfo {
                 "     , B.broker_name                       BK_NM     \n" +
                 "     , A.issue_code                        ISU_CD    \n" +
                 "  FROM table_order A                                 \n" +
-                "     , brokers B                                      \n" +
-                " WHERE A.broker_id = B.broker_id                  \n" ;
+                "     , brokers B                                     \n" +
+                " WHERE A.broker_id = B.broker_id                     \n" ;
 
 //                "   AND A.order_date BETWEEN :fromDate \n" +
 //                "                        AND :toDate     ";

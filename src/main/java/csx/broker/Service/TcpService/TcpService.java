@@ -1,12 +1,17 @@
+package csx.broker.Service.TcpService;
 
-package csx.broker.tcp;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class GreetClient {
+
+@Service
+public class TcpService {
+
+
     private Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;
@@ -34,15 +39,4 @@ public class GreetClient {
         }
     }
 
-    public static void main(String[] args) {
-        GreetClient client = new GreetClient();
-        try{
-            client.startConnection("10.10.18.190", 5000);
-
-            client.sendMessage("okai love ");
-
-        }catch (Exception e){
-            client.stopConnection();
-        }
-    }
 }

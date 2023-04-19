@@ -19,8 +19,8 @@ import java.sql.Date;
 public class Issue {
 
     @Id
-    @Column(name= "issue_code",columnDefinition = "Int")
-    private int issueCode;
+    @Column(name= "issue_code",columnDefinition = "String")
+    private String issueCode;
 
     @Column(name= "issue_symbol",columnDefinition = "String")
     private String issueSymbol;
