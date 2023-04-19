@@ -23,5 +23,6 @@ public class Balance {
     private String balance;
     @Column(name= "date",columnDefinition = "Date")
     private String date;
-
+    @Column(name= "status",columnDefinition = "String")
+    private String status;
 }
