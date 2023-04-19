@@ -49,13 +49,13 @@ public class OrderBroker {
 //        namedParameterJdbcTemplate.update(
 //                sql,
 //                params
-//        );
-
+//        )
+        //Check condition before save such as Type and base Price
         brokerService.save(req);
 
         bestService.process(req);
 //        bestService.getExistingBestOrder(best);
-        quotationDataSending.sending(rawSocketHandler, req);
+        quotationDataSending.sending(rawSocketHandler, req); // we  must write in matching engine
 
 //        bestService.getExistingBestOrder(in);
 /*

@@ -79,7 +79,6 @@ public class GetBrokerInfo {
                             .build();
                 }
         );
-
         response.setData(issueOdr);
         return response;
 

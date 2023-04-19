@@ -1,6 +1,7 @@
 package csx.broker.websocket.send;
 
 import csx.broker.Entity.broker.Broker;
+import csx.broker.Entity.execution.Execution;
 import csx.broker.websocket.etc.RawSocketHandler;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class QuotationDataSending {
                                 format("%04d",Integer.parseInt(broker.getBrokerId()))     +
                                 format("%04d",Integer.parseInt(broker.getAccountNo()))    +
                                 format("%08d",broker.getOriginalOrderNo())                +
-                                format("%08d", broker.getOrderUV())                       +
+                                format("%08d", broker.getOrderQty())                       +
                                 format("%08d", broker.getOrderUV())                       + formattedDate;
             log.info("Send growth board market data [{}]", msgSend); //console.log in intellij
             rawSocketHandler.sendAll(msgSend);
@@ -36,7 +37,7 @@ public class QuotationDataSending {
                                 format("%04d",Integer.parseInt(broker.getBrokerId()))     +
                                 format("%04d",Integer.parseInt(broker.getAccountNo()))    +
                                 format("%08d",broker.getOriginalOrderNo())                +
-                                format("%08d", broker.getOrderUV())                       +
+                                format("%08d", broker.getOrderQty())                       +
                                 format("%08d", broker.getOrderUV())                       + formattedDate;
             log.info("Send growth board market data [{}]", msgSend); //console.log in intellij
             rawSocketHandler.sendAll(msgSend);
