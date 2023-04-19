@@ -60,19 +60,12 @@ public class OrderBroker {
             tcpService.stopConnection();
         }
 
-
-
-
 //        quotationDataSending.sending(rawSocketHandler, req);
 
         response.setResMsg("Order Successfully. . .");
         response.setResCode(1);
-
         return response;
-
     }
-
-
     private String deserielization(Broker in){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String formattedDate = sdf.format(in.getOrderDate());
