@@ -14,13 +14,13 @@ import java.sql.Date;
 @Setter
 @Getter
 @Data
-@Table(name = "stock")
+@Table(name = "issue")
 
 public class Issue {
 
     @Id
-    @Column(name= "issue_code",columnDefinition = "String")
-    private String issueCode;
+    @Column(name= "issue_code",columnDefinition = " NOT NULL AUTO_INCREMENT")
+    private int issueCode;
 
     @Column(name= "issue_symbol",columnDefinition = "String")
     private String issueSymbol;
