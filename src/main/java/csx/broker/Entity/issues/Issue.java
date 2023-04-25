@@ -14,7 +14,7 @@ import java.sql.Date;
 @Setter
 @Getter
 @Data
-@Table(name = "stock")
+@Table(name = "issue")
 
 public class Issue {
 
@@ -29,5 +29,6 @@ public class Issue {
     @Column(name= "issue_description",columnDefinition = "String")
     private String issueDescription;
 
-
+    @Column(name= "issue_date",columnDefinition = "Date")
+    private Date issueDate;
 }

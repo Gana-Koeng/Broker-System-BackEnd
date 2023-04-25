@@ -49,7 +49,7 @@ public class GetBrokerInfo {
                 "     , B.issue_code                        ISU_CD     \n" +
                 "     , B.issue_description                 ISU_DS     \n" +
                 "  FROM table_order A                                  \n" +
-                "     , stock B                                        \n" +
+                "     , issue B                                        \n" +
                 " WHERE A.issue_code = B.issue_code                    \n" ;
 
 //                "   AND A.order_date BETWEEN :fromDate \n" +

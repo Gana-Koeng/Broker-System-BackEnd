@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IssueRespository extends CrudRepository<Issue,Integer> {
 
-    @Query(value = "SELECT * FROM stock ", nativeQuery = true)
+    @Query(value = "SELECT * FROM issue ", nativeQuery = true)
     Iterable<Issue> getAllData();
 
 
