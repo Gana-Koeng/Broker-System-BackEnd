@@ -37,7 +37,7 @@ public class GreetClient {
     public static void main(String[] args) {
         GreetClient client = new GreetClient();
         try{
-            client.startConnection("10.10.18.190", 5000);
+            client.startConnection("10.10.18.211", 5000);
 
             client.sendMessage("okai love ");
 

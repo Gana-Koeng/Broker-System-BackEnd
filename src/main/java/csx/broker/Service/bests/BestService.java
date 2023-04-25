@@ -1,11 +1,13 @@
 package csx.broker.Service.bests;
 
 
-import csx.broker.Entity.accounts.Account;
+
 import csx.broker.Entity.bests.Best;
-import csx.broker.Entity.broker.Broker;
+
+import csx.broker.Entity.orders.Order;
 import csx.broker.Repository.bests.BestRepository;
-import csx.broker.Repository.broker.BrokerRepository;
+
+import csx.broker.Repository.orders.OrderRepository;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -13,13 +15,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class BestService {
     private final BestRepository bestRepository;
-    private final BrokerRepository brokerRepository;
+    private final OrderRepository orderRepository;
 
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    public BestService(BestRepository bestRepository, BrokerRepository brokerRepository) {
+    public BestService(BestRepository bestRepository, OrderRepository orderRepository) {
         this.bestRepository = bestRepository;
-        this.brokerRepository = brokerRepository;
+
+        this.orderRepository = orderRepository;
     }
 
     public Iterable<Best> getAlldata() {
@@ -33,7 +36,7 @@ public class BestService {
     //    public Iterable<Base> getAlldata() {
 //        return accountRespository.getAllData();
 //    }
-    public void process(Broker req) {
+    public void process(Order req) {
         Best bestOrder = new Best();
         
         bestOrder.setOrderQty(req.getOrderQty());

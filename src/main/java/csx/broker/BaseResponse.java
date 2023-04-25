@@ -14,4 +14,8 @@ public class BaseResponse {
 
     private Object Data;
 
+    public void doSth(){
+        System.out.println("haha");
+    }
+
 }

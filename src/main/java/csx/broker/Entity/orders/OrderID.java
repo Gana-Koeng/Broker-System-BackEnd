@@ -1,14 +1,12 @@
-package csx.broker.Entity.broker;
+package csx.broker.Entity.orders;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.sql.Date;
 
 @Data
-public class BrokerId implements Serializable {
+public class OrderID implements Serializable {
 
     private int orderNo;
     private Date orderDate;

@@ -1,4 +1,4 @@
-package csx.broker.WebController.broker;
+package csx.broker.WebController.issues;
 
 import csx.broker.BaseResponse;
 import csx.broker.Service.issues.IssueService;
@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class DeleteStockInfo {
+public class DeleteIssueInfo {
 
     final IssueService issueService;
 
-    public DeleteStockInfo(IssueService issueService) {
+    public DeleteIssueInfo(IssueService issueService) {
         this.issueService = issueService;
     }
 

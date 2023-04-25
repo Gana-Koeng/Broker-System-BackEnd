@@ -23,6 +23,7 @@ public class TcpService {
         System.out.println(clientSocket.getInputStream());
     }
 
+
     public String sendMessage(String msg) throws Exception {
         out.println(msg);
         String resp = in.readLine();

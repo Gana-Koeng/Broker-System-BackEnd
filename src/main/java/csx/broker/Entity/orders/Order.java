@@ -1,5 +1,6 @@
-package csx.broker.Entity.broker;
+package csx.broker.Entity.orders;
 
+//import csx.broker.Entity.broker.BrokerId;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -17,8 +18,8 @@ import java.sql.Date;
 @Getter
 @Data
 @Table(name = "table_order")
-@IdClass(BrokerId.class)
-public class Broker implements Serializable {
+@IdClass(OrderID.class)
+public class Order implements Serializable {
 
     @Id
     @Column(name= "order_no",columnDefinition = "Int")
