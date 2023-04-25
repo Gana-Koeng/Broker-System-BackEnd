@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Setter
@@ -20,14 +20,13 @@ public class Balance {
 
     @Id
     @Column(name= "account_no",columnDefinition = "String")
-    private String accountNo;
+    private String account_no;
     @Column(name= "balance",columnDefinition = "Int")
     private int balance;
-    @Column(name= "date",columnDefinition = "Date")
-    private Date date;
-    @Column(name= "amount",columnDefinition = "int")
+    @Column(name= "amount",columnDefinition = "Int")
     private int amount;
-    @Column(name= "status",columnDefinition = "string")
+    @Column(name= "date",columnDefinition = "String")
+    private String date;
+    @Column(name= "status",columnDefinition = "String")
     private String status;
-
 }

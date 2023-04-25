@@ -1,8 +1,8 @@
 package csx.broker.WebController.brokers;
 
 import csx.broker.BaseResponse;
-//import csx.broker.Entity.brokers.Brokers;
-import csx.broker.Service.broker.BrokerService;
+
+import csx.broker.Service.orders.OrderService;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -16,11 +16,12 @@ import java.util.List;
 public class GetBrokersInfo {
 
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    final BrokerService brokerService;
+    final OrderService orderService;
 
-    public GetBrokersInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, BrokerService brokerService) {
+    public GetBrokersInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, OrderService orderService) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-        this.brokerService = brokerService;
+        this.orderService = orderService;
+
     }
 
     @GetMapping(value = {"api/brokers-info"})

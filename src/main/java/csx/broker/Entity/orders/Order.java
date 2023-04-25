@@ -1,5 +1,6 @@
-package csx.broker.Entity.broker;
+package csx.broker.Entity.orders;
 
+//import csx.broker.Entity.broker.BrokerId;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -8,17 +9,20 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.sql.Date;
+//import java.util.ArrayList;
+//import java.util.List;
 
+//create table and variable match to database
 @Entity
 @Setter
 @Getter
 @Data
 @Table(name = "table_order")
-@IdClass(BrokerId.class)
-public class Broker implements Serializable {
+@IdClass(OrderID.class)
+public class Order implements Serializable {
 
     @Id
-    @Column(name= "order_no",columnDefinition = "Auto Increment")
+    @Column(name= "order_no",columnDefinition = "Int")
     private int orderNo;
 
     @Id
@@ -33,8 +37,8 @@ public class Broker implements Serializable {
     private String accountNo;
     @Column(name= "order_type",columnDefinition = "int")
     private int orderType;
-    @Column(name= "issue_code",columnDefinition = "int")
-    private int issueCode;
+    @Column(name= "issue_code",columnDefinition = "String")
+    private String issueCode;
     @Column(name= "original_order_no",columnDefinition = "Int")
     private int originalOrderNo;
     @Column(name= "order_qty",columnDefinition = "Int")

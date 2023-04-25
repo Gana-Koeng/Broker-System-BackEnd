@@ -1,11 +1,13 @@
 package csx.broker.Service.bests;
 
 
+
 import csx.broker.Entity.bests.Best;
-import csx.broker.Entity.broker.Broker;
-import csx.broker.Entity.execution.Execution;
+
+import csx.broker.Entity.orders.Order;
 import csx.broker.Repository.bests.BestRepository;
-import csx.broker.Repository.broker.BrokerRepository;
+
+import csx.broker.Repository.orders.OrderRepository;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -13,13 +15,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class BestService {
     private final BestRepository bestRepository;
-    private final BrokerRepository brokerRepository;
+    private final OrderRepository orderRepository;
 
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    public BestService(BestRepository bestRepository, BrokerRepository brokerRepository) {
+    public BestService(BestRepository bestRepository, OrderRepository orderRepository) {
         this.bestRepository = bestRepository;
-        this.brokerRepository = brokerRepository;
+
+        this.orderRepository = orderRepository;
     }
 
     public Iterable<Best> getAlldata() {
@@ -33,19 +36,19 @@ public class BestService {
     //    public Iterable<Base> getAlldata() {
 //        return accountRespository.getAllData();
 //    }
-    public void process(Broker req) {
+    public void process(Order req) {
         Best bestOrder = new Best();
         
         bestOrder.setOrderQty(req.getOrderQty());
         bestOrder.setOrderUv(Integer.parseInt(String.valueOf(req.getOrderUV())));
-        bestOrder.setOrderStock(Integer.valueOf(req.getIssueCode()));
-        bestOrder.setOrderType(Integer.valueOf(req.getOrderType()));
+        bestOrder.setOrderStock(String.valueOf(req.getIssueCode()));
+        bestOrder.setOrderType(String.valueOf(req.getOrderType()));
 
         save(bestOrder);
     }
 //it to call two entity we should write in best service and broker order
 
-    public void getExistingBestOrder(Best best) {
+    public void getExistingBestOrder(Best in) {
 
         String GET_BEST_PRICE = "" +
                 "  SELECT COUNT(*)                     \n" +
@@ -56,10 +59,10 @@ public class BestService {
                 "    AND order_stock = :orderStock      \n" +
                 " ;";
         MapSqlParameterSource params = new MapSqlParameterSource();
-        params.addValue("orderType", best.getOrderType());
-        params.addValue("orderUV", best.getOrderUv());
-        params.addValue("orderQty", best.getOrderQty());
-        params.addValue("orderStock", best.getOrderStock());
+        params.addValue("orderType", in.getOrderType());
+        params.addValue("orderUV", in.getOrderUv());
+        params.addValue("orderQty", in.getOrderQty());
+        params.addValue("orderStock", in.getOrderStock());
 
         int exist = namedParameterJdbcTemplate.queryForObject(
                 GET_BEST_PRICE,
@@ -70,15 +73,16 @@ public class BestService {
         if (exist == 0) {
 
             String INSERT_BEST_PRICE = "" +
-                    "INSERT INTO best_price            \n" +
+                    "INSERT INTO best_price           \n" +
                     "          ( order_type            \n" +
                     "          , order_uv              \n" +
                     "          , order_qty             \n" +
                     "          , order_stock)          \n" +
-                    "   VALUES (:orderType             \n" +
-                    "         , :orderUV               \n" +
-                    "         , :orderQty              \n" +
-                    "         , :orderStock);            ";
+                    "   VALUES (:orderType            \n" +
+                    "         , :orderUV              \n" +
+                    "         , :orderQty             \n" +
+                    "         , :orderStock);           ";
+
 
             namedParameterJdbcTemplate.update(
                     INSERT_BEST_PRICE,
@@ -87,24 +91,24 @@ public class BestService {
 
         }
 
-        if (exist != 0){
-//            String UPDATE_SQL;
-
-         String  sql = "" +
-                    "UPDATE best_price                          \n" +
-                    "SET order_qty =(                           \n" +
-                    "SELECT SUM(:orderQty+order_qty))           \n" +
-                    "WHERE :orderUV = best_price.order_uv       \n" +
-                    "AND :orderType = best_price.order_type     \n" +
-                    "AND :orderStock =best_price.order_stock"    ;
-
-            params.addValue("orderType", best.getOrderType());
-            params.addValue("orderUV", best.getOrderUv());
-            params.addValue("orderStock", best.getOrderStock());
-            params.addValue("orderQty", best.getOrderQty());
-
-
-        }
+//        if (exist != 0){
+////            String UPDATE_SQL;
+//
+//            sql = "" +
+//                    "UPDATE best_price                          \n" +
+//                    "SET order_qty =(                           \n" +
+//                    "SELECT SUM(:orderQty+order_qty))           \n" +
+//                    "WHERE :orderUV = best_price.order_uv       \n" +
+//                    "AND :orderType = best_price.order_type     \n" +
+//                    "AND :orderStock =best_price.order_stock"    ;
+//
+//            params.addValue("orderType", in.getOrderType());
+//            params.addValue("orderUV", in.getOrderUV());
+//            params.addValue("orderStock", in.getOrderStock());
+//            params.addValue("orderQty", in.getOrderQty());
+//
+//
+//        }
 
     }
 }

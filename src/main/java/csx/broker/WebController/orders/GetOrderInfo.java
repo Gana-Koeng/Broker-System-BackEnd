@@ -1,7 +1,7 @@
-package csx.broker.WebController.broker;
+package csx.broker.WebController.orders;
 
 import csx.broker.BaseResponse;
-import csx.broker.Service.broker.BrokerService;
+import csx.broker.Service.orders.OrderService;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class GetBrokerInfo {
+public class GetOrderInfo {
 
     final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    final BrokerService brokerService;
+    final OrderService orderService;
 
-    public GetBrokerInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, BrokerService brokerService) {
+    public GetOrderInfo(NamedParameterJdbcTemplate namedParameterJdbcTemplate, OrderService orderService) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-        this.brokerService = brokerService;
+        this.orderService = orderService;
     }
 
     @GetMapping(value = {"api/broker-info"})
@@ -49,7 +49,7 @@ public class GetBrokerInfo {
                 "     , B.issue_code                        ISU_CD     \n" +
                 "     , B.issue_description                 ISU_DS     \n" +
                 "  FROM table_order A                                  \n" +
-                "     , stock B                                        \n" +
+                "     , issue B                                        \n" +
                 " WHERE A.issue_code = B.issue_code                    \n" ;
 
 //                "   AND A.order_date BETWEEN :fromDate \n" +
@@ -79,6 +79,7 @@ public class GetBrokerInfo {
                             .build();
                 }
         );
+
         response.setData(issueOdr);
         return response;
 

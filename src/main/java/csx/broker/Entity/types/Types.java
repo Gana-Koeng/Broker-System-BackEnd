@@ -18,8 +18,8 @@ import lombok.Setter;
 public class Types {
 
     @Id
-    @Column(name= "order_type",columnDefinition = "String")
-    private String OrderType;
+    @Column(name= "order_type",columnDefinition = "int")
+    private int OrderType;
     @Column(name= "order_name",columnDefinition = "String")
     private String OrderName;
 
