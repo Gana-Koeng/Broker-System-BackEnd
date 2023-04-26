@@ -27,7 +27,7 @@ public class MakeOrder {
 
     final TcpService tcpService;
 
-    private static final String TCP_IP = "10.10.18.191";
+    private static final String TCP_IP = "10.10.18.248";
     private static final int TCP_PORT = 5000;
 
 
@@ -77,9 +77,9 @@ public class MakeOrder {
                                in.getOrderType()                                     +
                                in.getBrokerId()                                      +
                                in.getAccountNo()                                     +
-                               format("%08d",in.getOriginalOrderNo())                +
-                               format("%08d", in.getOrderQty())                      +
-                               format("%08d", in.getOrderUV())                       + formattedDate ;
+                               format("%010d",in.getOriginalOrderNo())               +
+                               format("%010d", in.getOrderQty())                     +
+                               format("%010d", in.getOrderUV())                      + formattedDate ;
             return msgMessage;
          }
         if (in.getOrderType()== 2){
@@ -88,9 +88,9 @@ public class MakeOrder {
                                 in.getOrderType()                                     +
                                 in.getBrokerId()                                      +
                                 in.getAccountNo()                                     +
-                                format("%08d",in.getOriginalOrderNo())                +
-                                format("%08d", in.getOrderQty())                      +
-                                format("%08d", in.getOrderUV())                       + formattedDate ;
+                                format("%010d",in.getOriginalOrderNo())               +
+                                format("%010d", in.getOrderQty())                     +
+                                format("%010d", in.getOrderUV())                      + formattedDate ;
             return msgMessage;
          }
 
