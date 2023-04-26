@@ -19,8 +19,8 @@ import java.sql.Date;
 public class Brokers {
 
     @Id
-    @Column(name= "broker_id",columnDefinition = "Int")
-    private int BrokerId;
+    @Column(name= "broker_id",columnDefinition = "String")
+    private String BrokerId;
     @Column(name= "broker_name",columnDefinition = "String")
     private String BrokerName;
 

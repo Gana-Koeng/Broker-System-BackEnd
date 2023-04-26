@@ -27,7 +27,7 @@ public class MakeOrder {
 
     final TcpService tcpService;
 
-    private static final String TCP_IP = "10.10.18.211";
+    private static final String TCP_IP = "10.10.18.248";
     private static final int TCP_PORT = 5000;
 
 
@@ -74,21 +74,23 @@ public class MakeOrder {
         if (in.getOrderType()== 1){
            String msgMessage = "S1"                                                  +
                                in.getIssueCode()                                     +
-                               format("%04d",Integer.parseInt(in.getBrokerId()))     +
-                               format("%04d",Integer.parseInt(in.getAccountNo()))    +
-                               format("%08d",in.getOriginalOrderNo())                +
-                               format("%08d", in.getOrderUV())                       +
-                               format("%08d", in.getOrderUV())                       + formattedDate ;
+                               in.getOrderType()                                     +
+                               in.getBrokerId()                                      +
+                               in.getAccountNo()                                     +
+                               format("%010d",in.getOriginalOrderNo())               +
+                               format("%010d", in.getOrderQty())                     +
+                               format("%010d", in.getOrderUV())                      + formattedDate ;
             return msgMessage;
          }
         if (in.getOrderType()== 2){
             String msgMessage = "B1"                                                  +
                                 in.getIssueCode()                                     +
-                                format("%04d",Integer.parseInt(in.getBrokerId()))     +
-                                format("%04d",Integer.parseInt(in.getAccountNo()))    +
-                                format("%08d",in.getOriginalOrderNo())                +
-                                format("%08d", in.getOrderUV())                       +
-                                format("%08d", in.getOrderUV())                       + formattedDate ;
+                                in.getOrderType()                                     +
+                                in.getBrokerId()                                      +
+                                in.getAccountNo()                                     +
+                                format("%010d",in.getOriginalOrderNo())               +
+                                format("%010d", in.getOrderQty())                     +
+                                format("%010d", in.getOrderUV())                      + formattedDate ;
             return msgMessage;
          }
 
