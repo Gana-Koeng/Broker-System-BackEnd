@@ -31,6 +31,4 @@ public class Issue {
     @Column(name= "issue_date",columnDefinition = "Date")
     private Date issueDate;
 
-    @Column(name= "issue_date",columnDefinition = "Date")
-    private Date issueDate;
 }
