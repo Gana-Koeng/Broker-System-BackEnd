@@ -19,7 +19,7 @@ public class Best {
 
 
     @Id
-    @Column(name = "id", columnDefinition = "Int")
+    @Column(name = "id", columnDefinition = "int")
     private int id;
     @Column(name = "order_type", columnDefinition = "String")
     private String orderType;
@@ -31,8 +31,6 @@ public class Best {
     private int orderQty;
 
 
-    public String getData() {
-        return "123";
-    }
+
 }
 
