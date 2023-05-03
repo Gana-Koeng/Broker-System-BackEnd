@@ -27,7 +27,7 @@ public class MakeOrder {
 
     final TcpService tcpService;
 
-    private static final String TCP_IP = "10.10.18.248";
+    private static final String TCP_IP = "10.10.18.165";
     private static final int TCP_PORT = 5000;
 
 
