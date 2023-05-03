@@ -23,8 +23,7 @@ public class Balance {
     private String account_no;
     @Column(name= "balance",columnDefinition = "Int")
     private int balance;
-    @Column(name= "amount",columnDefinition = "Int")
-    private int amount;
+
     @Column(name= "date",columnDefinition = "String")
     private String date;
     @Column(name= "status",columnDefinition = "String")

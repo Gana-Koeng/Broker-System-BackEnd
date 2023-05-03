@@ -45,6 +45,8 @@ public class Order implements Serializable {
     private int orderQty;
     @Column(name= "order_uv",columnDefinition = "BigInt")
     private BigInteger orderUV;
+    @Column(name= "remain_qty",columnDefinition = "int")
+    private int remainQty;
 
 //    List<Broker> list = new ArrayList<>();
 

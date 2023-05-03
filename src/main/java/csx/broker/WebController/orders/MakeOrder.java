@@ -27,7 +27,7 @@ public class MakeOrder {
 
     final TcpService tcpService;
 
-    private static final String TCP_IP = "10.10.18.248";
+    private static final String TCP_IP = "10.10.18.211";
     private static final int TCP_PORT = 5000;
 
 
@@ -60,7 +60,7 @@ public class MakeOrder {
             System.out.println("Tcp cannot connect to client");
             tcpService.stopConnection();
         }
-
+        bestService.process(req);
         quotationDataSending.sending(rawSocketHandler, req);
 
         response.setResMsg("Order Successfully. . .");
