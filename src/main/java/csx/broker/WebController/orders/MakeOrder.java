@@ -24,10 +24,8 @@ public class MakeOrder {
     final BestService bestService;
     final QuotationDataSending quotationDataSending;
     final RawSocketHandler rawSocketHandler;
-
     final TcpService tcpService;
-
-    private static final String TCP_IP = "10.10.18.165";
+    private static final String TCP_IP = "192.168.105.120";
     private static final int TCP_PORT = 5000;
 
 

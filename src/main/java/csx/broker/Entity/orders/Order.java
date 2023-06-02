@@ -32,7 +32,6 @@ public class Order implements Serializable {
     @Id
     @Column(name= "broker_id",columnDefinition = "String")
     private String brokerId;
-
     @Column(name= "account_no",columnDefinition = "String")
     private String accountNo;
     @Column(name= "order_type",columnDefinition = "int")
@@ -45,11 +44,7 @@ public class Order implements Serializable {
     private int orderQty;
     @Column(name= "order_uv",columnDefinition = "BigInt")
     private BigInteger orderUV;
-    @Column(name= "remain_qty",columnDefinition = "int")
-    private int remainQty;
-
+    @Column(name= "remain_qty",columnDefinition = "String")
+    private String remainQty;
 //    List<Broker> list = new ArrayList<>();
-
-
-
 }
